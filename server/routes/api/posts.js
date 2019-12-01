@@ -3,6 +3,7 @@ const mongodb = require('mongodb');
 
 const router = express.Router();
 const db = process.env.DB;
+const db_name = process.env.DB_NAME;
 
 // Get Posts
 router.get('/', async (req, res) => {
@@ -33,7 +34,7 @@ async function loadPostsCollection() {
 		useNewUrlParser: true
 	});
 
-	return client.db('mongo-test-f8g3w').collection('posts');
+	return client.db(`${db_name}`).collection('posts');
 }
 
 module.exports = router;
